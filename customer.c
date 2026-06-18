@@ -3,7 +3,7 @@
 #include "customer.h"
 
 void addCustomer(Customer customers[], int *count) {
-    printf("\n--- Add New Customer ---\n");
+    printf("\n=== Add New Customer ===\n");
     
     if (*count >= MAX_CUSTOMERS) {
         printf("Error: Customer database is full (%d/%d).\n", *count, MAX_CUSTOMERS);
@@ -30,15 +30,16 @@ void addCustomer(Customer customers[], int *count) {
 }
 
 void displayCustomers(Customer customers[], int count) {
-    printf("\n--- Customer List ---\n");
+    printf("\n=== Customer List ===\n");
     
     if (count == 0) {
         printf("No customers registered yet.\n");
         return;
     }
-
+    
+    printf("============================================================\n");
     printf("%-12s | %-25s | %-15s\n", "Customer ID", "Name", "Phone Number");
-    printf("------------------------------------------------------------\n");
+    printf("============================================================\n");
 
     for (int i = 0; i < count; i++) {
         printf("%-12d | %-25s | %-15s\n", 
@@ -46,5 +47,5 @@ void displayCustomers(Customer customers[], int count) {
                customers[i].name, 
                customers[i].phone);
     }
-    printf("------------------------------------------------------------\n");
+    printf("============================================================\n");
 }
