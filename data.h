@@ -4,6 +4,7 @@
 #define MAX_NAME 50
 #define MAX_PHONE 20
 #define MAX_ITEM 20
+#define MAX_CUSTOMERS 100
 
 typedef struct
 {
