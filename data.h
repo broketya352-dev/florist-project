@@ -33,6 +33,7 @@ typedef struct
     Flower flower;      // nested struct
     int quantity;
     float subtotal;
+   float unitPrice;
 } OrderItem;
 
 typedef struct
