@@ -9,8 +9,6 @@ void salesReport(Order orders[], int orderCount, Flower flowers[], int flowerCou
         for (int j = 0; j < orders[i].itemCount; j++) {
             int currentFlowerID = orders[i].item[j].flower.flowerID;
             
-            searchFlowerByID(flowers, flowerCount, currentFlowerID);
-            
             printf("Quantity Ordered: %d\n", orders[i].item[j].quantity);
         }
     }
