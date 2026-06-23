@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "order.h"
 #include "data.h"
+#include "time.h"
 
 void createOrder(Order orders[], int *orderCount,
                  Flower flowers[], int flowerCount)
@@ -25,6 +26,25 @@ void createOrder(Order orders[], int *orderCount,
         orders[*orderCount].orderID =
             orders[*orderCount - 1].orderID + 1;
     }
+  
+  t = time(NULL);
+    currentTime = localtime(&t);
+
+    orders[*orderCount].date.day =
+        currentTime->tm_mday;
+
+    orders[*orderCount].date.month =
+        currentTime->tm_mon + 1;
+
+    orders[*orderCount].date.year =
+        currentTime->tm_year + 1900;
+
+    orders[*orderCount].totalPayment = 0;
+
+    printf("Order Date : %02d/%02d/%04d\n",
+           orders[i].date.day,
+           orders[i].date.month,
+           orders[i].date.year);
 
     orders[*orderCount].totalPayment = 0;
 
