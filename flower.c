@@ -62,21 +62,25 @@ void displayFlowers(Flower flowers[], int count)
         return;
     }
 
-    printf("\n=====================================================\n");
-    printf("%-8s %-20s %-10s %-10s\n",
-           "ID", "Name", "Price", "Stock");
-    printf("-----------------------------------------------------\n");
+   printf("\n");
+    printf("=======================================================================\n");
+    printf("|                         AVAILABLE FLOWERS                          |\n");
+    printf("=======================================================================\n");
+    printf("| %-6s | %-22s | %-10s | %-8s |\n",
+           "ID", "Flower Name", "Price", "Stock");
+    printf("-----------------------------------------------------------------------\n");
 
-    for (int i = 0; i < count; i++)
+    for (i = 0; i < count; i++)
     {
-        printf("%-8d %-20s %-10.2f %-10d\n",
+        printf("| %-6d | %-22s | $%-9.2f | %-8d |\n",
                flowers[i].flowerID,
                flowers[i].name,
                flowers[i].price,
                flowers[i].stock);
     }
 
-    printf("=====================================================\n");
+    printf("=======================================================================\n");
+}
 }
 
 void updateFlowerStock(Flower flowers[], int count)
