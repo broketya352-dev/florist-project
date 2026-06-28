@@ -164,20 +164,35 @@ int main(void)
     do
     {
         printf("\n");
-        printf("=====================================\n");
-        printf("     FLORIST MANAGEMENT SYSTEM\n");
-        printf("=====================================\n");
+        printf("=====================================================\n");
+        printf("             FLORIST MANAGEMENT SYSTEM\n");
+        printf("=====================================================\n");
+
+        printf("\nFLOWER MANAGEMENT\n");
+        printf("-----------------------------------------------------\n");
         printf("1. Add Flower\n");
         printf("2. Display Flowers\n");
         printf("3. Update Flower Stock\n");
         printf("4. Search Flower By ID\n");
-        printf("5. Add Customer\n");
-        printf("6. Display Customers\n");
-        printf("7. Create Order\n");
-        printf("8. Display Orders\n");
-        printf("9. Delete Flower\n");
-        printf("0. Exit\n");
-        printf("=====================================\n");
+        printf("5. Delete Flower\n");
+
+        printf("\nCUSTOMER MANAGEMENT\n");
+        printf("-----------------------------------------------------\n");
+        printf("6. Add Customer\n");
+        printf("7. Display Customers\n");
+
+        printf("\nORDER MANAGEMENT\n");
+        printf("-----------------------------------------------------\n");
+        printf("8. Create Order\n");
+        printf("9. Display Orders\n");
+
+        printf("\nREPORTS\n");
+        printf("-----------------------------------------------------\n");
+        printf("10. Sales Report\n");
+        printf("11. Low Stock Report\n");
+
+        printf("\n0. Exit\n");
+        printf("=====================================================\n");
         printf("Enter Choice : ");
         scanf("%d", &choice);
 
