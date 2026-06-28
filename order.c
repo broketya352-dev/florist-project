@@ -167,3 +167,44 @@ void displayOrders(Order orders[], int orderCount)
         printf("=========================================\n");
     }
 }
+void lowStockReport(Flower flowers[], int flowerCount)
+{
+       int i;
+       int flag = 0;
+
+       if (flowerCount == 0)
+       {
+              printf("\nNo flowers available.\n");
+              return;
+       }
+
+       printf("\n");
+       printf("==========================================================\n");
+       printf("                  LOW STOCK REPORT\n");
+       printf("==========================================================\n");
+       printf("%-8s %-20s %-10s %-10s\n",
+              "ID", "Flower", "Price", "Stock");
+       printf("----------------------------------------------------------\n");
+
+       for (i = 0; i < flowerCount; i++)
+       {
+
+              if (flowers[i].stock <= 10)
+              {
+                     printf("%-8d %-20s %-10.2f %-10d\n",
+                            flowers[i].flowerID,
+                            flowers[i].name,
+                            flowers[i].price,
+                            flowers[i].stock);
+
+                     flag = 1;
+              }
+       }
+
+       if (flag == 0)
+       {
+              printf("No flowers are low in stock.\n");
+       }
+
+       printf("==========================================================\n");
+}
