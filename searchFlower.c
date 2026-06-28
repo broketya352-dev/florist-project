@@ -28,13 +28,13 @@ int searchFlowerByID(Flower flowers[], int count)
             printf("Stock     : %d\n", flowers[i].stock);
             printf("========================================\n");
             
-            while ((c = getchar()) != '\n' && c != -1); 
+            while ((c = getchar()) != '\n' && c != EOF); 
             
             return i; 
     }
 }
 
     printf("\nFlower ID not found.\n");
-    while ((c = getchar()) != '\n' && c != -1); // Clean up buffer safely
+    while ((c = getchar()) != '\n' && c != EOF); // Clean up buffer safely
     return -1; // Return -1 indicating not found
 }
