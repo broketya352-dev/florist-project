@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "searchFlower.h"
 
-int searchFlowerByID(Flower flowers[], int count)
+void searchFlowerByID(Flower flowers[], int count)
 {
     int i;
     int flowerID;
