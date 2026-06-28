@@ -128,17 +128,16 @@ void updateFlowerStock(Flower flowers[], int count)
     {
         printf("Enter New Stock : ");
         scanf("%d", &flowers[index].stock);
-
         if (flowers[index].stock < 0)
         {
             printf("Stock cannot be negative.\n");
         }
-
     } while (flowers[index].stock < 0);
 
     printf("\nFlower updated successfully!\n");
+}    // ← closes updateFlowerStock
 
-    void deleteFlower(Flower flowers[], int *count)
+void deleteFlower(Flower flowers[], int *count)
 {
     int flowerID;
     int i;
@@ -169,13 +168,4 @@ void updateFlowerStock(Flower flowers[], int count)
         printf("\nFlower ID not found.\n");
         return;
     }
-
-    for (i = index; i < *count - 1; i++)
-    {
-        flowers[i] = flowers[i + 1];
-    }
-
-    (*count)--;
-
-    printf("\nFlower deleted successfully!\n");
 }
