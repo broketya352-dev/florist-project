@@ -190,6 +190,7 @@ int main(void)
         printf("-----------------------------------------------------\n");
         printf("10. Sales Report\n");
         printf("11. Low Stock Report\n");
+        printf("12. Sale History\n");
 
         printf("\n0. Exit\n");
         printf("=====================================================\n");
