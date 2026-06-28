@@ -137,4 +137,45 @@ void updateFlowerStock(Flower flowers[], int count)
     } while (flowers[index].stock < 0);
 
     printf("\nFlower updated successfully!\n");
+
+    void deleteFlower(Flower flowers[], int *count)
+{
+    int flowerID;
+    int i;
+    int index = -1;
+
+    if (*count == 0)
+    {
+        printf("\nNo flowers available.\n");
+        return;
+    }
+
+    displayFlowers(flowers, *count);
+
+    printf("\nEnter Flower ID to delete: ");
+    scanf("%d", &flowerID);
+
+    for (i = 0; i < *count; i++)
+    {
+        if (flowers[i].flowerID == flowerID)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == -1)
+    {
+        printf("\nFlower ID not found.\n");
+        return;
+    }
+
+    for (i = index; i < *count - 1; i++)
+    {
+        flowers[i] = flowers[i + 1];
+    }
+
+    (*count)--;
+
+    printf("\nFlower deleted successfully!\n");
 }
