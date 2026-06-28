@@ -4,5 +4,6 @@
 #include "data.h"
 
 void salesReport(Order orders[], int orderCount);
+void customerPurchaseHistory(Order orders[], int orderCount);
 
 #endif
