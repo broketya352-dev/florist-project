@@ -11,8 +11,7 @@ void addCustomer(Customer customers[], int *count) {
     }
 
     customers[*count].customerID =  *count + 1;
-    int newID = customers[*count].customerID;
-    printf("Assigned Customer ID: %d\n", newID);
+    printf("Assigned Customer ID: %d\n", customers[*count].customerID);
 
     printf("Enter Customer Name: ");
 
