@@ -7,5 +7,6 @@ void createOrder(Order orders[], int *orderCount,
                  Flower flowers[], int flowerCount);
 
 void displayOrders(Order orders[], int orderCount);
+void lowStockReport(Flower flowers[], int flowerCount);
 
 #endif
