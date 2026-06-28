@@ -2,8 +2,7 @@
 #include "report.h"
 #include "seachFlower.h"
 
-void salesReport(Order orders[], int orderCount,
-                 Flower flowers[], int flowerCount)
+void salesReport(Order orders[], int orderCount,Flower flowers[], int flowerCount)
 {
     int i;
     int j;
