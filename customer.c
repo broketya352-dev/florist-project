@@ -81,3 +81,20 @@ void findCustomer(Customer customers[], int count) {
                customers[index].phone);
     }
 }
+
+ void deleteCustomer(Customer customers[], int *count, char *phone){
+    int index = searchCustomer(customers, *count, phone);
+    
+    if (index == -1) {
+        printf("Customer not found.\n");
+        return;
+    }
+    
+    // shift stored array to the left to fill up the gap that is empty after deleting the customer.
+    for (int i = index; i < *count - 1; i++) {
+        customers[i] = customers[i + 1];
+    }
+    
+    (*count)--;
+    printf("Customer deleted successfully!\n");
+}
