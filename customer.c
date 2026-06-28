@@ -51,3 +51,33 @@ void displayCustomers(Customer customers[], int count) {
     }
     printf("============================================================\n");
 }
+
+int searchCustomer(Customer customers[], int count, char *phone) {
+    for (int i = 0; i < count; i++) {
+        if (strcmp(customers[i].phone, phone) == 0) {
+            return i;  // return i if customer happen to be found.
+        }
+    }
+    return -1;  // return -1 if customer is not found.
+}
+
+void findCustomer(Customer customers[], int count) {
+    char phone[MAX_PHONE];
+    
+    printf("Enter phone number to search: ");
+    int ch; while ((ch = getchar()) != '\n' && ch != EOF);
+    fgets(phone, MAX_PHONE, stdin);
+    phone[strcspn(phone, "\n")] = '\0';
+    
+    int index = searchCustomer(customers, count, phone);
+    
+    if (index == -1) {
+        printf("No customer found with phone: %s\n", phone);
+    } else {
+        printf("\nCustomer Found:\n");
+        printf("ID: %d | Name: %s | Phone: %s\n",
+               customers[index].customerID,
+               customers[index].name,
+               customers[index].phone);
+    }
+}
