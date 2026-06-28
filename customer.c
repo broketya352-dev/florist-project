@@ -16,8 +16,8 @@ void addCustomer(Customer customers[], int *count) {
 
     printf("Enter Customer Name: ");
 
-    int ch;
-    while ((ch = getchar()) != '\n' && (ch != EOF)); 
+    int cha;
+    while ((cha = getchar()) != '\n' && (cha != EOF)); 
 
     fgets(customers[*count].name, MAX_NAME, stdin);
     customers[*count].name[strcspn(customers[*count].name, "\n")] = '\0';
