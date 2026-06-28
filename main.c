@@ -1,72 +1,236 @@
 #include <stdio.h>
+#include <string.h>
 #include "data.h"
+#include "flower.h"
+#include "customer.h"
+#include "order.h"
+#include "seachFlower.h"
 
 void loadMockData(Flower flowers[], int *flowerCount,
-                  Order orders[], int *orderCount);
+                  Customer customers[], int *customerCount)
+{
+    /* Flower 1 */
+    strcpy(flowers[0].name, "Rose");
+    flowers[0].flowerID = 1001;
+    flowers[0].price = 50.0;
+    flowers[0].stock = 25;
+
+    /* Flower 2 */
+    strcpy(flowers[1].name, "Tulip");
+    flowers[1].flowerID = 1002;
+    flowers[1].price = 35.0;
+    flowers[1].stock = 30;
+
+    /* Flower 3 */
+    strcpy(flowers[2].name, "Sunflower");
+    flowers[2].flowerID = 1003;
+    flowers[2].price = 45.0;
+    flowers[2].stock = 20;
+
+    /* Flower 4 */
+    strcpy(flowers[3].name, "Lily");
+    flowers[3].flowerID = 1004;
+    flowers[3].price = 60.0;
+    flowers[3].stock = 15;
+
+    /* Flower 5 */
+    strcpy(flowers[4].name, "Daisy");
+    flowers[4].flowerID = 1005;
+    flowers[4].price = 25.0;
+    flowers[4].stock = 40;
+
+    /* Flower 6 */
+    strcpy(flowers[5].name, "Orchid");
+    flowers[5].flowerID = 1006;
+    flowers[5].price = 80.0;
+    flowers[5].stock = 12;
+
+    /* Flower 7 */
+    strcpy(flowers[6].name, "Carnation");
+    flowers[6].flowerID = 1007;
+    flowers[6].price = 30.0;
+    flowers[6].stock = 35;
+
+    /* Flower 8 */
+    strcpy(flowers[7].name, "Jasmine");
+    flowers[7].flowerID = 1008;
+    flowers[7].price = 40.0;
+    flowers[7].stock = 22;
+
+    /* Flower 9 */
+    strcpy(flowers[8].name, "Lavender");
+    flowers[8].flowerID = 1009;
+    flowers[8].price = 55.0;
+    flowers[8].stock = 18;
+
+    /* Flower 10 */
+    strcpy(flowers[9].name, "Peony");
+    flowers[9].flowerID = 1010;
+    flowers[9].price = 75.0;
+    flowers[9].stock = 14;
+
+    /* Flower 11 */
+    strcpy(flowers[10].name, "Marigold");
+    flowers[10].flowerID = 1011;
+    flowers[10].price = 20.0;
+    flowers[10].stock = 50;
+
+    /* Flower 12 */
+    strcpy(flowers[11].name, "Hibiscus");
+    flowers[11].flowerID = 1012;
+    flowers[11].price = 45.0;
+    flowers[11].stock = 28;
+
+    /* Flower 13 */
+    strcpy(flowers[12].name, "Lotus");
+    flowers[12].flowerID = 1013;
+    flowers[12].price = 90.0;
+    flowers[12].stock = 10;
+
+    /* Flower 14 */
+    strcpy(flowers[13].name, "Cherry Blossom");
+    flowers[13].flowerID = 1014;
+    flowers[13].price = 100.0;
+    flowers[13].stock = 8;
+
+    /* Flower 15 */
+    strcpy(flowers[14].name, "Daffodil");
+    flowers[14].flowerID = 1015;
+    flowers[14].price = 35.0;
+    flowers[14].stock = 25;
+
+    /* Flower 16 */
+    strcpy(flowers[15].name, "Iris");
+    flowers[15].flowerID = 1016;
+    flowers[15].price = 65.0;
+    flowers[15].stock = 16;
+
+    /* Flower 17 */
+    strcpy(flowers[16].name, "Magnolia");
+    flowers[16].flowerID = 1017;
+    flowers[16].price = 85.0;
+    flowers[16].stock = 11;
+
+    /* Flower 18 */
+    strcpy(flowers[17].name, "Gardenia");
+    flowers[17].flowerID = 1018;
+    flowers[17].price = 70.0;
+    flowers[17].stock = 19;
+
+    /* Flower 19 */
+    strcpy(flowers[18].name, "Camellia");
+    flowers[18].flowerID = 1019;
+    flowers[18].price = 55.0;
+    flowers[18].stock = 24;
+
+    /* Flower 20 */
+    strcpy(flowers[19].name, "Hydrangea");
+    flowers[19].flowerID = 1020;
+    flowers[19].price = 95.0;
+    flowers[19].stock = 13;
+
+    *flowerCount = 20;
+    // Add sample customers
+    strcpy(customers[0].name, "Ahmed Hassan");
+    customers[0].customerID = 101;
+    strcpy(customers[0].phone, "01012345678");
+
+    strcpy(customers[1].name, "Fatima Ali");
+    customers[1].customerID = 102;
+    strcpy(customers[1].phone, "01098765432");
+
+    strcpy(customers[2].name, "Mohamed Ibrahim");
+    customers[2].customerID = 103;
+    strcpy(customers[2].phone, "01156789012");
+
+    *customerCount = 3;
+}
 
 int main(void)
 {
     Flower flowers[100];
+    Customer customers[MAX_CUSTOMERS];
     Order orders[100];
 
     int flowerCount = 0;
+    int customerCount = 0;
     int orderCount = 0;
 
-    loadMockData(flowers, &flowerCount, orders, &orderCount);
+    int choice;
 
-    printf("Flowers loaded: %d\n", flowerCount);
-    printf("Orders loaded : %d\n", orderCount);
+    loadMockData(flowers, &flowerCount,
+                 customers, &customerCount);
+
+    do
+    {
+        printf("\n");
+        printf("=====================================\n");
+        printf("     FLORIST MANAGEMENT SYSTEM\n");
+        printf("=====================================\n");
+        printf("1. Add Flower\n");
+        printf("2. Display Flowers\n");
+        printf("3. Update Flower Stock\n");
+        printf("4. Search Flower By ID\n");
+        printf("5. Add Customer\n");
+        printf("6. Display Customers\n");
+        printf("7. Create Order\n");
+        printf("8. Display Orders\n");
+        printf("9. Delete Flower\n");
+        printf("0. Exit\n");
+        printf("=====================================\n");
+        printf("Enter Choice : ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            addFlower(flowers, &flowerCount);
+            break;
+
+        case 2:
+            displayFlowers(flowers, flowerCount);
+            break;
+
+        case 3:
+            updateFlowerStock(flowers, flowerCount);
+            break;
+
+        case 4:
+            searchFlowerByID(flowers, flowerCount);
+            break;
+
+        case 5:
+            addCustomer(customers, &customerCount);
+            break;
+
+        case 6:
+            displayCustomers(customers, customerCount);
+            break;
+
+        case 7:
+            createOrder(orders,
+                        &orderCount,
+                        flowers,
+                        flowerCount);
+            break;
+
+        case 8:
+            displayOrders(orders, orderCount);
+            break;
+
+        case 9:
+            deleteFlower(flowers, &flowerCount);
+            break;
+
+        case 0:
+            printf("\nExiting Program...\n");
+            break;
+
+        default:
+            printf("\nInvalid Choice!\n");
+        }
+
+    } while (choice != 0);
 
     return 0;
-}
-
-void loadMockData(Flower flowers[], int *flowerCount,
-                  Order orders[], int *orderCount)
-{
-    /* ---------- Flowers ---------- */
-    *flowerCount = 6;
-
-    flowers[0] = (Flower){101, "Red Rose", 2.50f, 100};
-    flowers[1] = (Flower){102, "White Lily", 3.20f, 50};
-    flowers[2] = (Flower){103, "Sunflower", 1.80f, 75};
-    flowers[3] = (Flower){104, "Tulip", 2.80f, 60};
-    flowers[4] = (Flower){105, "Orchid", 5.00f, 30};
-    flowers[5] = (Flower){106, "Carnation", 1.50f, 120};
-
-    /* ---------- Orders ---------- */
-    *orderCount = 2;
-
-    orders[0].orderID = 1001;
-    orders[0].customer = (Customer){1, "Alice Johnson", "012345678"};
-    orders[0].date = (Date){17, 6, 2026};
-    orders[0].itemCount = 2;
-
-    orders[0].item[0].flower = flowers[0];
-    orders[0].item[0].quantity = 5;
-    orders[0].item[0].subtotal = 12.50f;
-
-    orders[0].item[1].flower = flowers[3];
-    orders[0].item[1].quantity = 3;
-    orders[0].item[1].subtotal = 8.40f;
-
-    orders[0].totalPayment = 20.90f;
-
-    orders[1].orderID = 1002;
-    orders[1].customer = (Customer){2, "Bob Smith", "098765432"};
-    orders[1].date = (Date){18, 6, 2026};
-    orders[1].itemCount = 3;
-
-    orders[1].item[0].flower = flowers[1];
-    orders[1].item[0].quantity = 2;
-    orders[1].item[0].subtotal = 6.40f;
-
-    orders[1].item[1].flower = flowers[2];
-    orders[1].item[1].quantity = 10;
-    orders[1].item[1].subtotal = 18.00f;
-
-    orders[1].item[2].flower = flowers[4];
-    orders[1].item[2].quantity = 1;
-    orders[1].item[2].subtotal = 5.00f;
-
-    orders[1].totalPayment = 29.40f;
 }
