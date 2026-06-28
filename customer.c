@@ -15,8 +15,8 @@ void addCustomer(Customer customers[], int *count) {
 
     printf("Enter Customer Name: ");
 
-    int cha;
-    while ((cha = getchar()) != '\n' && (cha != EOF)); 
+    int l1;
+    while ((l1 = getchar()) != '\n' && l1 != EOF); 
 
     fgets(customers[*count].name, MAX_NAME, stdin);
     customers[*count].name[strcspn(customers[*count].name, "\n")] = '\0';
@@ -64,7 +64,8 @@ void findCustomer(Customer customers[], int count) {
     char phone[MAX_PHONE];
     
     printf("Enter phone number to search: ");
-    int ch; while ((ch = getchar()) != '\n' && ch != EOF);
+    int l2;
+    while ((l2 = getchar()) != '\n' && l2 != EOF);
     fgets(phone, MAX_PHONE, stdin);
     phone[strcspn(phone, "\n")] = '\0';
     
@@ -100,8 +101,8 @@ void findCustomer(Customer customers[], int count) {
 void sketandDCustomer(Customer customers[], int *count, char *phone) {
     char phone[MAX_PHONE];
     printf("Enter phone number to delete: ");
-    int ch;
-    while ((ch = getchar()) != '\n' && ch != EOF);
+    int l3;
+    while ((l3 = getchar()) != '\n' && l3 != EOF);
     fgets(phone, MAX_PHONE, stdin);
     phone[strcspn(phone, "\n")] = '\0';
     deleteCustomer(customers, count, phone);
