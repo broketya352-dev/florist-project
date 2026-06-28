@@ -97,3 +97,13 @@ void findCustomer(Customer customers[], int count) {
     (*count)--;
     printf("Customer deleted successfully!\n");
 }
+void sketandDCustomer(Customer customers[], int *count, char *phone) {
+    char phone[MAX_PHONE];
+    printf("Enter phone number to delete: ");
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
+    fgets(phone, MAX_PHONE, stdin);
+    phone[strcspn(phone, "\n")] = '\0';
+    deleteCustomer(customers, count, phone);
+}
+
