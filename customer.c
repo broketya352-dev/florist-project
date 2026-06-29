@@ -2,7 +2,7 @@
 #include <string.h>
 #include "customer.h"
 
-void addCustomer(Customer customers[], int *count) {
+void addCustomer(Customer customers[], int *count, int *nextID) {
     printf("\n=== Add New Customer ===\n");
     
     if (*count >= MAX_CUSTOMERS) {
@@ -10,12 +10,13 @@ void addCustomer(Customer customers[], int *count) {
         return;
     }
 
-    customers[*count].customerID =  *count + 1;
+    customers[*count].customerID =  *nextID;
+    (*nextID)++;
     printf("Assigned Customer ID: %d\n", customers[*count].customerID);
 
     printf("Enter Customer Name: ");
-
     int l1;
+    
     while ((l1 = getchar()) != '\n' && l1 != EOF); 
 
     fgets(customers[*count].name, MAX_NAME, stdin);
@@ -64,7 +65,7 @@ void findCustomer(Customer customers[], int count) {
     char phone[MAX_PHONE];
     
     printf("Enter phone number to search: ");
-    int l2;
+    int l2; 
     while ((l2 = getchar()) != '\n' && l2 != EOF);
     fgets(phone, MAX_PHONE, stdin);
     phone[strcspn(phone, "\n")] = '\0';
@@ -81,16 +82,16 @@ void findCustomer(Customer customers[], int count) {
                customers[index].phone);
     }
 }
-
- void deleteCustomer(Customer customers[], int *count, char *phone){
-    int index = searchCustomer(customers, *count, phone);
+    
+void deleteCustomer(Customer customers[], int *count, char *phone){
+    int index = searchCustomer(customers, *count, phone); // reuse search!
     
     if (index == -1) {
         printf("Customer not found.\n");
         return;
     }
     
-    // shift stored array to the left to fill up the gap that is empty after deleting the customer.
+    // shift everything left to fill the gap
     for (int i = index; i < *count - 1; i++) {
         customers[i] = customers[i + 1];
     }
@@ -98,13 +99,16 @@ void findCustomer(Customer customers[], int count) {
     (*count)--;
     printf("Customer deleted successfully!\n");
 }
-void sketandDCustomer(Customer customers[], int *count, char *phone) {
+
+void HandleDCustomer(Customer customers[], int *count) {
     char phone[MAX_PHONE];
+    
     printf("Enter phone number to delete: ");
-    int l3;
-    while ((l3 = getchar()) != '\n' && l3 != EOF);
+    
+    int l2;
+    while ((l2 = getchar()) != '\n' && l2 != EOF);
+    
     fgets(phone, MAX_PHONE, stdin);
     phone[strcspn(phone, "\n")] = '\0';
     deleteCustomer(customers, count, phone);
 }
-
