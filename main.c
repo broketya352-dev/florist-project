@@ -4,168 +4,194 @@
 #include "flower.h"
 #include "customer.h"
 #include "order.h"
+#include "report.h"
 #include "seachFlower.h"
 
 void loadMockData(Flower flowers[], int *flowerCount,
                   Customer customers[], int *customerCount)
 {
-    /* Flower 1 */
+
     strcpy(flowers[0].name, "Rose");
     flowers[0].flowerID = 1001;
     flowers[0].price = 50.0;
     flowers[0].stock = 25;
 
-    /* Flower 2 */
     strcpy(flowers[1].name, "Tulip");
     flowers[1].flowerID = 1002;
     flowers[1].price = 35.0;
     flowers[1].stock = 30;
 
-    /* Flower 3 */
     strcpy(flowers[2].name, "Sunflower");
     flowers[2].flowerID = 1003;
     flowers[2].price = 45.0;
     flowers[2].stock = 20;
 
-    /* Flower 4 */
     strcpy(flowers[3].name, "Lily");
     flowers[3].flowerID = 1004;
     flowers[3].price = 60.0;
     flowers[3].stock = 15;
 
-    /* Flower 5 */
     strcpy(flowers[4].name, "Daisy");
     flowers[4].flowerID = 1005;
     flowers[4].price = 25.0;
     flowers[4].stock = 40;
 
-    /* Flower 6 */
     strcpy(flowers[5].name, "Orchid");
     flowers[5].flowerID = 1006;
     flowers[5].price = 80.0;
     flowers[5].stock = 12;
 
-    /* Flower 7 */
     strcpy(flowers[6].name, "Carnation");
     flowers[6].flowerID = 1007;
     flowers[6].price = 30.0;
     flowers[6].stock = 35;
 
-    /* Flower 8 */
     strcpy(flowers[7].name, "Jasmine");
     flowers[7].flowerID = 1008;
     flowers[7].price = 40.0;
     flowers[7].stock = 22;
 
-    /* Flower 9 */
     strcpy(flowers[8].name, "Lavender");
     flowers[8].flowerID = 1009;
     flowers[8].price = 55.0;
     flowers[8].stock = 18;
 
-    /* Flower 10 */
     strcpy(flowers[9].name, "Peony");
     flowers[9].flowerID = 1010;
     flowers[9].price = 75.0;
     flowers[9].stock = 14;
 
-    /* Flower 11 */
     strcpy(flowers[10].name, "Marigold");
     flowers[10].flowerID = 1011;
     flowers[10].price = 20.0;
     flowers[10].stock = 50;
 
-    /* Flower 12 */
     strcpy(flowers[11].name, "Hibiscus");
     flowers[11].flowerID = 1012;
     flowers[11].price = 45.0;
     flowers[11].stock = 28;
 
-    /* Flower 13 */
     strcpy(flowers[12].name, "Lotus");
     flowers[12].flowerID = 1013;
     flowers[12].price = 90.0;
     flowers[12].stock = 10;
 
-    /* Flower 14 */
     strcpy(flowers[13].name, "Cherry Blossom");
     flowers[13].flowerID = 1014;
     flowers[13].price = 100.0;
     flowers[13].stock = 8;
 
-    /* Flower 15 */
     strcpy(flowers[14].name, "Daffodil");
     flowers[14].flowerID = 1015;
     flowers[14].price = 35.0;
     flowers[14].stock = 25;
 
-    /* Flower 16 */
     strcpy(flowers[15].name, "Iris");
     flowers[15].flowerID = 1016;
     flowers[15].price = 65.0;
     flowers[15].stock = 16;
 
-    /* Flower 17 */
     strcpy(flowers[16].name, "Magnolia");
     flowers[16].flowerID = 1017;
     flowers[16].price = 85.0;
     flowers[16].stock = 11;
 
-    /* Flower 18 */
     strcpy(flowers[17].name, "Gardenia");
     flowers[17].flowerID = 1018;
     flowers[17].price = 70.0;
     flowers[17].stock = 19;
 
-    /* Flower 19 */
     strcpy(flowers[18].name, "Camellia");
     flowers[18].flowerID = 1019;
     flowers[18].price = 55.0;
     flowers[18].stock = 24;
 
-    /* Flower 20 */
     strcpy(flowers[19].name, "Hydrangea");
     flowers[19].flowerID = 1020;
     flowers[19].price = 95.0;
     flowers[19].stock = 13;
 
     *flowerCount = 20;
-    // Add sample customers
+
     strcpy(customers[0].name, "Ahmed Hassan");
-    customers[0].customerID = 101;
+    customers[0].customerID = 1;
     strcpy(customers[0].phone, "01012345678");
 
     strcpy(customers[1].name, "Fatima Ali");
-    customers[1].customerID = 102;
+    customers[1].customerID = 2;
     strcpy(customers[1].phone, "01098765432");
 
     strcpy(customers[2].name, "Mohamed Ibrahim");
-    customers[2].customerID = 103;
+    customers[2].customerID = 3;
     strcpy(customers[2].phone, "01156789012");
 
     *customerCount = 3;
 }
-
-int main(void)
+void customerMenu(Flower flowers[], int flowerCount,
+                  Customer customers[], int customerCount,
+                  Order orders[], int *orderCount)
 {
-    Flower flowers[100];
-    Customer customers[MAX_CUSTOMERS];
-    Order orders[100];
-
-    int flowerCount = 0;
-    int customerCount = 0;
-    int orderCount = 0;
-
     int choice;
-
-    loadMockData(flowers, &flowerCount,
-                 customers, &customerCount);
 
     do
     {
         printf("\n");
         printf("=====================================================\n");
-        printf("             FLORIST MANAGEMENT SYSTEM\n");
+        printf("                 CUSTOMER MENU\n");
+        printf("=====================================================\n");
+
+        printf("\nFLOWER SHOP\n");
+        printf("-----------------------------------------------------\n");
+        printf("1. View Available Flowers\n");
+        printf("2. Create Order\n");
+
+        printf("\nORDER\n");
+        printf("-----------------------------------------------------\n");
+        printf("3. View My Purchase History\n");
+
+        printf("\n0. Back\n");
+        printf("=====================================================\n");
+        printf("Enter Choice : ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            displayFlowers(flowers, flowerCount);
+            break;
+
+        case 2:
+            createOrder(orders,
+                        orderCount,
+                        flowers,
+                        flowerCount);
+            break;
+
+        case 3:
+            customerPurchaseHistory(orders, *orderCount);
+            break;
+
+        case 0:
+            printf("\nReturning to Main Menu...\n");
+            break;
+
+        default:
+            printf("\nInvalid Choice!\n");
+        }
+
+    } while (choice != 0);
+}
+void managerMenu(Flower flowers[], int *flowerCount,
+                 Customer customers[], int *customerCount,
+                 Order orders[], int *orderCount)
+{
+    int choice;
+
+    do
+    {
+        printf("\n");
+        printf("=====================================================\n");
+        printf("                 MANAGER MENU\n");
         printf("=====================================================\n");
 
         printf("\nFLOWER MANAGEMENT\n");
@@ -183,16 +209,15 @@ int main(void)
 
         printf("\nORDER MANAGEMENT\n");
         printf("-----------------------------------------------------\n");
-        printf("8. Create Order\n");
-        printf("9. Display Orders\n");
+        printf("8. Display Orders\n");
 
         printf("\nREPORTS\n");
         printf("-----------------------------------------------------\n");
-        printf("10. Sales Report\n");
-        printf("11. Low Stock Report\n");
-        printf("12. Sale History\n");
+        printf("9. Sales Report\n");
+        printf("10. Low Stock Report\n");
+        printf("11. Customer Purchase History\n");
 
-        printf("\n0. Exit\n");
+        printf("\n0. Back\n");
         printf("=====================================================\n");
         printf("Enter Choice : ");
         scanf("%d", &choice);
@@ -200,46 +225,115 @@ int main(void)
         switch (choice)
         {
         case 1:
-            addFlower(flowers, &flowerCount);
+            addFlower(flowers, flowerCount);
             break;
 
         case 2:
-            displayFlowers(flowers, flowerCount);
+            displayFlowers(flowers, *flowerCount);
             break;
 
         case 3:
-            updateFlowerStock(flowers, flowerCount);
+            updateFlowerStock(flowers, *flowerCount);
             break;
 
         case 4:
-            searchFlowerByID(flowers, flowerCount);
+            searchFlowerByID(flowers, *flowerCount);
             break;
 
         case 5:
-            addCustomer(customers, &customerCount);
+            deleteFlower(flowers, flowerCount);
             break;
 
         case 6:
-            displayCustomers(customers, customerCount);
+            addCustomer(customers, customerCount);
             break;
 
         case 7:
-            createOrder(orders,
-                        &orderCount,
-                        flowers,
-                        flowerCount);
+            displayCustomers(customers, *customerCount);
             break;
 
         case 8:
-            displayOrders(orders, orderCount);
+            displayOrders(orders, *orderCount);
             break;
 
         case 9:
-            deleteFlower(flowers, &flowerCount);
+            salesReport(orders,
+                        *orderCount,
+                        flowers,
+                        *flowerCount);
+            break;
+
+        case 10:
+            lowStockReport(flowers, *flowerCount);
+            break;
+
+        case 11:
+            customerPurchaseHistory(orders, *orderCount);
             break;
 
         case 0:
-            printf("\nExiting Program...\n");
+            printf("\nReturning to Main Menu...\n");
+            break;
+
+        default:
+            printf("\nInvalid Choice!\n");
+        }
+
+    } while (choice != 0);
+}
+
+int main(void)
+{
+    Flower flowers[100];
+    Customer customers[MAX_CUSTOMERS];
+    Order orders[100];
+
+    int flowerCount = 0;
+    int customerCount = 0;
+    int orderCount = 0;
+
+    int choice;
+
+    loadMockData(flowers, &flowerCount,
+                 customers, &customerCount);
+    do
+    {
+       printf("\n");
+printf("=====================================================\n");
+printf("           FLORIST MANAGEMENT SYSTEM\n");
+printf("=====================================================\n");
+printf("|                                                   |\n");
+printf("|  1. Manager                                       |\n");
+printf("|  2. Customer                                      |\n");
+printf("|                                                   |\n");
+printf("|  0. Exit                                          |\n");
+printf("|                                                   |\n");
+printf("=====================================================\n");
+printf("Enter Choice : ");
+scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            managerMenu(flowers,
+                        &flowerCount,
+                        customers,
+                        &customerCount,
+                        orders,
+                        &orderCount);
+            break;
+
+        case 2:
+            customerMenu(flowers,
+                         flowerCount,
+                         customers,
+                         customerCount,
+                         orders,
+                         &orderCount);
+            break;
+
+        case 0:
+            printf("\nThank You!\n");
             break;
 
         default:
