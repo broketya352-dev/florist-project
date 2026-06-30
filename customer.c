@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 #include "customer.h"
 
 void addCustomer(Customer customers[], int *count, int *nextID) {
