@@ -1,4 +1,4 @@
-#include <stdio.h>
+[6/30/2026 4:36 PM] ⚡ Pann Ketya ( ប៉ាន់​ កិត្យា ): #include <stdio.h>
 #include <string.h>
 #include "data.h"
 #include "flower.h"
@@ -128,47 +128,71 @@ void loadMockData(Flower flowers[], int *flowerCount,
     *customerCount = 3;
 }
 void customerMenu(Flower flowers[], int flowerCount,
-                  Customer customers[], int customerCount,
+                  Customer customers[], int *customerCount,
                   Order orders[], int *orderCount)
 {
     int choice;
+    int registered = 0;
 
     do
     {
-        printf("\n");
-        printf("=====================================================\n");
+        printf("\n=====================================================\n");
         printf("                 CUSTOMER MENU\n");
         printf("=====================================================\n");
 
-        printf("\nFLOWER SHOP\n");
-        printf("-----------------------------------------------------\n");
-        printf("1. View Available Flowers\n");
-        printf("2. Create Order\n");
+        printf("1. Register\n");
+        printf("2. View Available Flowers\n");
+        printf("3. Create Order\n");
+        printf("4. View Purchase History\n");
+        printf("0. Back\n");
 
-        printf("\nORDER\n");
-        printf("-----------------------------------------------------\n");
-        printf("3. View My Purchase History\n");
-
-        printf("\n0. Back\n");
         printf("=====================================================\n");
         printf("Enter Choice : ");
         scanf("%d", &choice);
 
         switch (choice)
         {
+
         case 1:
-            displayFlowers(flowers, flowerCount);
+            addCustomer(customers, customerCount);
+            registered = 1;
+            printf("\nRegistration Successful!\n");
             break;
 
         case 2:
+
+            if (registered == 0)
+            {
+                printf("\nPlease register first!\n");
+                break;
+            }
+
+            displayFlowers(flowers, flowerCount);
+            break;
+
+        case 3:
+            if (registered == 0)
+            {
+                printf("\nPlease register first!\n");
+                break;
+            }
+
             createOrder(orders,
                         orderCount,
                         flowers,
                         flowerCount);
-            break;
 
-        case 3:
-            customerPurchaseHistory(orders, *orderCount);
+            break;
+        case 4:
+            if (registered == 0)
+            {
+                printf("\nPlease register first!\n");
+                break;
+            }
+
+            customerPurchaseHistory(orders,
+                                    *orderCount);
+
             break;
 
         case 0:
@@ -178,9 +202,9 @@ void customerMenu(Flower flowers[], int flowerCount,
         default:
             printf("\nInvalid Choice!\n");
         }
-
     } while (choice != 0);
 }
+
 void managerMenu(Flower flowers[], int *flowerCount,
                  Customer customers[], int *customerCount,
                  Order orders[], int *orderCount)
@@ -287,8 +311,7 @@ int main(void)
     Flower flowers[100];
     Customer customers[MAX_CUSTOMERS];
     Order orders[100];
-
-    int flowerCount = 0;
+[6/30/2026 4:36 PM] ⚡ Pann Ketya ( ប៉ាន់​ កិត្យា ): int flowerCount = 0;
     int customerCount = 0;
     int orderCount = 0;
 
@@ -296,21 +319,24 @@ int main(void)
 
     loadMockData(flowers, &flowerCount,
                  customers, &customerCount);
-    do
+
+   
+
+  do
     {
-       printf("\n");
-printf("=====================================================\n");
-printf("           FLORIST MANAGEMENT SYSTEM\n");
-printf("=====================================================\n");
-printf("|                                                   |\n");
-printf("|  1. Manager                                       |\n");
-printf("|  2. Customer                                      |\n");
-printf("|                                                   |\n");
-printf("|  0. Exit                                          |\n");
-printf("|                                                   |\n");
-printf("=====================================================\n");
-printf("Enter Choice : ");
-scanf("%d", &choice);
+        printf("\n");
+        printf("=====================================================\n");
+        printf("           FLORIST MANAGEMENT SYSTEM\n");
+        printf("=====================================================\n");
+        printf("|                                                   |\n");
+        printf("|  1. Manager                                       |\n");
+        printf("|  2. Customer                                      |\n");
+        printf("|                                                   |\n");
+        printf("|  0. Exit                                          |\n");
+        printf("|                                                   |\n");
+        printf("=====================================================\n");
+        printf("Enter Choice : ");
+        scanf("%d", &choice);
 
         switch (choice)
         {
@@ -327,7 +353,7 @@ scanf("%d", &choice);
             customerMenu(flowers,
                          flowerCount,
                          customers,
-                         customerCount,
+                         &customerCount,
                          orders,
                          &orderCount);
             break;
@@ -343,4 +369,6 @@ scanf("%d", &choice);
     } while (choice != 0);
 
     return 0;
+
+  
 }
